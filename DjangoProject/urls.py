@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from authenticate import views as authview
 from Course import views
+from Teacher import views as TeachView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,5 +32,8 @@ urlpatterns = [
     path('updateStudent/<int:id>', views.update_Student, name='studentUpdate'),
     path('createCourse/', views.create_course, name='courseCreation'),
     path('deleteCourse/<int:id>', views.delete_course, name='courseDelete'),
-    path('updateCourse/<int:id>', views.update_course, name='courseUpdate')
+    path('updateCourse/<int:id>', views.update_course, name='courseUpdate'),
+    path('homeTeacher/', TeachView.homeTeacher, name='teacherHome'),
+    path('createProject/', TeachView.projet, name='projet'),
+    path('listProject/', TeachView.liste, name='List')
 ]
