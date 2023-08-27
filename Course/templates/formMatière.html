@@ -179,21 +179,22 @@
       <div class="input-group input-group-outline my-3">
          <label class="form-label">Code</label>
          <input type="text" class="form-control">
+          {{ form.code }}
       </div>
     <div class="input-group input-group-outline my-3">
       <label class="form-label">Nom</label>
       <input type="text" class="form-control">
+        {{ form.nom }}
     </div>
       <div class="input-group input-group-static my-3">
       <label>Charger du cour</label>
       <select name="roles" class="form-control">
-        <option value="teacher">Prof 1</option>
-        <option value="student">Prof 2</option>
+        <option value="teacher">{{ charger }}</option>
       </select>
     </div>
     <div class="input-group input-group-static my-3">
       <label class="form-label">Observation</label>
-      <input type="text" class="form-control">
+        {{ form.observation }}
     </div>
       <li class="nav-item d-flex align-items-center">
         <a class="btn btn-outline-primary btn-sm mb-0 me-3"href="#">Ajouter</a>
