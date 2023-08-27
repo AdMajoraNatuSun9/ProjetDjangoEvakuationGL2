@@ -122,8 +122,8 @@ def create_course(request):
             )
             course.save()
         else:
-            message = 'Identifiants invalides.'
-    return render(request, 'formMatière.html', context={'form': form, 'message': message, 'charger': Teacher.nom})
+            message = 'Identifiants invalides.'#, 'charger': Teacher.nom
+    return render(request, 'formMatière.html', context={'form': form, 'message': message})
 
 
 def show_course(request, id):
