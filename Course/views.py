@@ -54,6 +54,7 @@ def delete_teacher(request, id):
     return render(request, 'formEnseignant.html', {'teacher': teacher})
 
 
+#######################################Student part################################################
 def create_Student(request):
     form = forms.StudentForm()
     message = ''
@@ -73,6 +74,34 @@ def create_Student(request):
             message = 'Identifiants invalides.'
     return render(request, 'formEtudiant.html', context={'form': form, 'message': message})
 
+
+def show_Student(request, id):
+    etudiant = Student.objects.all()
+    return render(request, 'formEtudiant.html', {'etudiant': etudiant, 'id': get_object_or_404(Teacher, id=id)})
+
+def update_Student(request, id):
+    etudiant = get_object_or_404(Student, id=id)
+
+    if request.method == 'POST':
+        form = forms.StudentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('studentCreation')  # Redirect to the teacher list view or another appropriate page
+    else:
+        form = forms.TeacherForm()
+
+    return render(request, 'formEtudiant.html', {'form': form, 'id': etudiant})
+
+
+def delete_Student(request, id):
+    etudiant = get_object_or_404(Student, id=id)
+
+    if request.method == 'POST':
+        etudiant.delete()
+        return redirect('studentCreation')  # Redirect to the teacher list view or another appropriate page
+
+    return render(request, 'formEtudiant.html', {'etudiant': etudiant})
+
+
 def create_course(request):
     return render(request, 'formMatière.html')
-

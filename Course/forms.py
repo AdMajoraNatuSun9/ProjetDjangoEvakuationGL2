@@ -18,3 +18,7 @@ class StudentForm(forms.Form):
     dateNaissance = forms.DateField(label='dateNaissance', widget=forms.DateInput(attrs={'class': 'form-control'}))
     numero = forms.CharField(label='numero', widget=forms.TextInput(attrs={'class': 'form-control'}))
     matiere = forms.ChoiceField(label='matiere', widget=forms.CheckboxInput(attrs={'class': 'form-control'}))
+
+
+class CourseForm(forms.Form):
+    code = forms.CharField(label='nom', widget=forms.TextInput(attrs={'class': 'form-control'}))
