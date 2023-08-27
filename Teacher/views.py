@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from Teacher import forms
 from Teacher.models import Project
 
@@ -26,5 +26,5 @@ def projet(request):
 
 
 def liste(request):
-    projet = Project.objects.all()
-    return render(request, 'listProject.html', context={'projet':projet})
+    listeprojet = Project.objects.all()
+    return render(request, 'listProject.html', context={'listeprojet':listeprojet})
