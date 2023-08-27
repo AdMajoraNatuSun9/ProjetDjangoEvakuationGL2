@@ -37,5 +37,6 @@ urlpatterns = [
     path('homeTeacher/', TeachView.homeTeacher, name='teacherHome'),
     path('createProject/', TeachView.projet, name='projet'),
     path('listProject/', TeachView.liste, name='List'),
-    path('homeStudent/', StuView.studentHome, name='studentHome')
+    path('homeStudent/', StuView.studentHome, name='studentHome'),
+    path('submition/', StuView.soumission, name='submition')
 ]
