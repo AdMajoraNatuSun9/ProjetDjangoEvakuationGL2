@@ -125,9 +125,10 @@ def create_course(request):
             message = 'Identifiants invalides.'
     return render(request, 'formMatière.html', context={'form': form, 'message': message})
 
+
 def show_course(request, id):
     cour = Course.objects.all()
-    return render(request, 'formEtudiant.html', {'cour': cour, 'id': get_object_or_404(Course, id=id)})
+    return render(request, 'formMatière.html', {'cour': cour, 'id': get_object_or_404(Course, id=id)})
 
 
 def update_course(request, id):
@@ -141,7 +142,7 @@ def update_course(request, id):
     else:
         form = forms.TeacherForm()
 
-    return render(request, 'formEtudiant.html', {'form': form, 'id': cour})
+    return render(request, 'formMatière.html', {'form': form, 'id': cour})
 
 
 def delete_course(request, id):
@@ -151,4 +152,4 @@ def delete_course(request, id):
         cour.delete()
         return redirect('courseCreation')  # Redirect to the teacher list view or another appropriate page
 
-    return render(request, 'formEtudiant.html', {'cour': cour})
+    return render(request, 'formMatière.html', {'cour': cour})
