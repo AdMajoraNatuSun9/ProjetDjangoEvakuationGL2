@@ -1,6 +1,8 @@
 from django.contrib.auth import authenticate
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import render, redirect
+
+from Course.models import Course
 from authenticate.models import Student, Teacher
 from Course import forms
 # Create your views here.
@@ -79,6 +81,7 @@ def show_Student(request, id):
     etudiant = Student.objects.all()
     return render(request, 'formEtudiant.html', {'etudiant': etudiant, 'id': get_object_or_404(Teacher, id=id)})
 
+
 def update_Student(request, id):
     etudiant = get_object_or_404(Student, id=id)
 
@@ -103,5 +106,49 @@ def delete_Student(request, id):
     return render(request, 'formEtudiant.html', {'etudiant': etudiant})
 
 
+
+##############################Course part########################################
 def create_course(request):
-    return render(request, 'formMatière.html')
+    form = forms.CourseForm()
+    message = ''
+    if request.method == 'POST':
+        form = forms.StudentForm(request.POST)
+        if form.is_valid():
+            course = Course(
+                nom=form.cleaned_data['nom'],
+                code=form.cleaned_data['code'],
+                chargerCour=form.cleaned_data['chargerCour'],
+                observation=form.cleaned_data['observation'],
+            )
+            course.save()
+        else:
+            message = 'Identifiants invalides.'
+    return render(request, 'formMatière.html', context={'form': form, 'message': message})
+
+def show_course(request, id):
+    cour = Course.objects.all()
+    return render(request, 'formEtudiant.html', {'cour': cour, 'id': get_object_or_404(Course, id=id)})
+
+
+def update_course(request, id):
+    cour = get_object_or_404(Student, id=id)
+
+    if request.method == 'POST':
+        form = forms.CourseForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('courseCreation')  # Redirect to the teacher list view or another appropriate page
+    else:
+        form = forms.TeacherForm()
+
+    return render(request, 'formEtudiant.html', {'form': form, 'id': cour})
+
+
+def delete_course(request, id):
+    cour = get_object_or_404(Course, id=id)
+
+    if request.method == 'POST':
+        cour.delete()
+        return redirect('courseCreation')  # Redirect to the teacher list view or another appropriate page
+
+    return render(request, 'formEtudiant.html', {'cour': cour})

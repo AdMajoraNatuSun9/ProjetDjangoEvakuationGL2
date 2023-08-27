@@ -4,8 +4,10 @@ from django.utils import timezone
 
 # Create your models here.
 
-class Teacher (models.Model):
+class Course (models.Model):
     nom = models.CharField(max_length=255)
-    prenom = models.TextField(max_length=255)
+    code = models.TextField(max_length=255)
+    chargerCour = models.CharField(max_length=255)
+    observation = models.TextField(max_length=255)
 
 # Create your models here.

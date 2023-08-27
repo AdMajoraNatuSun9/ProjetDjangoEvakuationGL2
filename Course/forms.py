@@ -21,4 +21,7 @@ class StudentForm(forms.Form):
 
 
 class CourseForm(forms.Form):
-    code = forms.CharField(label='nom', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    code = forms.CharField(label='code', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    nom = forms.CharField(label='nom', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    chargerCour = forms.CharField(label='chargerCour', widget=forms.CheckboxInput(attrs={'class': 'form-control'}))
+    observation = forms.CharField(label='observation', widget=forms.TextInput(attrs={'class': 'form-control'}))
