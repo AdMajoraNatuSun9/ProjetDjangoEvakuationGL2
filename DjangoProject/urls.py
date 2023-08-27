@@ -19,6 +19,7 @@ from django.urls import path
 from authenticate import views as authview
 from Course import views
 from Teacher import views as TeachView
+from Student import views as StuView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,5 +36,6 @@ urlpatterns = [
     path('updateCourse/<int:id>', views.update_course, name='courseUpdate'),
     path('homeTeacher/', TeachView.homeTeacher, name='teacherHome'),
     path('createProject/', TeachView.projet, name='projet'),
-    path('listProject/', TeachView.liste, name='List')
+    path('listProject/', TeachView.liste, name='List'),
+    path('homeStudent/', StuView.studentHome, name='studentHome')
 ]
